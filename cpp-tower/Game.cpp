@@ -14,13 +14,36 @@
 using std::cout;
 using std::endl;
 
+// remove top of i1 and move to i2
+void Game::_move(unsigned i1, unsigned i2){
+Cube cube = stacks_[i1].removeTop();
+stacks_[i2].push_back(cube);
+}
+
+void Game::_legalMove(unsigned i1, unsigned i2){
+  if(stacks_[i1].size()==0 && stacks_[i2].size()>0){
+    _move(i2,i1);
+  } else if (stacks_[i2].size()==0 && stacks_[i1].size()>0){
+    _move(i1,i2);
+  } else if (stacks_[i1].size()>0 && stacks_[i2].size()>0){
+    if (stacks_[i1].peekTop().getVolume() > stacks_[i2].peekTop().getVolume()){
+      _move(i2,i1);
+    } else {
+      _move(i1,i2);
+    } 
+  }
+}
+
 // Solves the Tower of Hanoi puzzle.
 // (Feel free to call "helper functions" to help you solve the puzzle.)
 void Game::solve() {
   // Prints out the state of the game:
-  cout << *this << endl;
-
-  // @TODO -- Finish solving the game!
+  while (stacks_[2].size() < 4){
+    _legalMove(0,1);
+    _legalMove(0,2);
+    _legalMove(2,1);
+  }
+    cout << *this << endl;
 }
 
 // Default constructor to create the initial state:

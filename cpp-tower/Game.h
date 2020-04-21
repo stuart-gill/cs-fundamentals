@@ -20,4 +20,6 @@ class Game {
 
   private:
     std::vector<Stack> stacks_;
+    void _move(unsigned i1, unsigned i2);
+    void _legalMove(unsigned i1, unsigned i2);
 };

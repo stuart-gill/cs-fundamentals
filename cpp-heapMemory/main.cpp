@@ -8,6 +8,7 @@
 #include <iostream>
 
 int main() {
+  // new keyword always returns a pointer
   int *numPtr = new int;
 
   std::cout << "*numPtr: " << *numPtr << std::endl;

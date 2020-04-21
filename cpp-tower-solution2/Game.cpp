@@ -53,7 +53,7 @@ void Game::_move(
   if (start == end) {
     // If so, move it directly:
     _moveCube( source, target );
-    cout << *this << endl;
+    cout << "this= " << *this << endl;
   } else {
     // Otherwise, use our move strategy:
     _move(start + 1, end  , source, spare , target, depth);

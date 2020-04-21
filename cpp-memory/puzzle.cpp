@@ -1,4 +1,4 @@
-/**
+ /**
  * C++ code showing improper use of memory (returning a reference to a stack variable).
  * 
  * @author
